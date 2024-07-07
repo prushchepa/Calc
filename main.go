@@ -25,6 +25,15 @@ func main() {
 	operand1, err1 := strconv.Atoi(op1)
 	operand2, err := strconv.Atoi(op2)
 	if err1 == nil && err == nil {
+		if operand1 == 0 || operand2 == 0 || operand1 > 10 || operand2 > 10 {
+			panic("Не входит в диапазон от 1 до 10")
+		}
+		result := calculate(operand1, operand2, n)
+		fmt.Println(result)
+		os.Exit(0)
+	}
+
+	if err1 == nil && err == nil {
 		result := calculate(operand1, operand2, n)
 		fmt.Println(result)
 		os.Exit(0)
