@@ -15,7 +15,7 @@ func main() {
 	oper := scanner.Text()
 	components := strings.Split(oper, " ")
 	if len(components) != 3 {
-		fmt.Println("Паника1")
+		panic("Колилество операндов не удволетворяет заданию")
 		return
 	}
 	var op1 string = components[0]
@@ -33,23 +33,23 @@ func main() {
 		operand1 = convertRomanToArabic(op1, n)
 		operand2 = convertRomanToArabic(op2, n)
 		if operand1 == 0 || operand2 == 0 {
-			fmt.Println("Паника2")
-			os.Exit(0)
+			panic("Символы не входят в римскую систему")
+
 		}
 		result := calculate(operand1, operand2, n)
 		rim := convert(result)
 		fmt.Println(rim)
 	} else {
-		fmt.Println("Паника3")
-		os.Exit(0)
+		panic("Используются одновременно разные системы счисления")
+
 	}
 
 }
 
 func convertRomanToArabic(comp, n string) int {
 	if n == "-" {
-		fmt.Println("Паника4")
-		os.Exit(0)
+		panic("В римской системе нет отрицательных чисел")
+
 	}
 	if comp == "I" {
 		return 1
@@ -86,9 +86,6 @@ func convertRomanToArabic(comp, n string) int {
 	}
 	if comp == "C" {
 		return 100
-	} else {
-		fmt.Println("Паника5")
-		os.Exit(0)
 	}
 	return 0
 }
@@ -132,10 +129,8 @@ func convert(result int) string {
 		if a > 0 {
 			rim.WriteString(romanNumbers[a-1])
 			a -= a
-		} else {
-			fmt.Println("Паника6")
-			os.Exit(0)
 		}
+
 	}
 	return rim.String()
 
