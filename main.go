@@ -46,6 +46,9 @@ func main() {
 
 		}
 		result := calculate(operand1, operand2, n)
+		if result == 0 {
+			panic("В римской системе нет числа 0")
+		}
 		rim := convert(result)
 		fmt.Println(rim)
 	} else {
